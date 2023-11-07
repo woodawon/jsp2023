@@ -29,7 +29,7 @@
 		psmt.setString(1, username);
 		psmt.setString(2, password);
 		ResultSet rs = psmt.executeQuery();
-		
+		boolean isLogin = false;
 		while(rs.next()) {
 			String id = rs.getString(1);
 			String pass =rs.getString(2);
@@ -37,10 +37,15 @@
 			java.sql.Date regidate = rs.getDate("regidate");
 			
 			out.println(String.format("%s %s %s %s", id, pass, name, regidate) + "<br>");
-			
+			isLogin = true;
+			session.setAttribute("id" ,id);
+		}
+		if(!isLogin) {
+			session.removeAttribute("id");
 		}
 		jdbc.close();
 		
 	%>
+	<a href="./login.jsp">로그인</a>
 </body>
 </html>
