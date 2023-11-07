@@ -1,4 +1,5 @@
-<%@page import="java.sql.Date"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="org.mariadb.jdbc.export.Prepare"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="door.JDBConnect"%>
@@ -21,20 +22,23 @@
 	password :
 	<%=password%>
 	<%
-		JDBConnect jdbc = new JDBConnect();
-		String sql = "SELECT * FROM MEMBER WHERE id='"+username+"' AND pass='"+password+"'";
-		Statement stmt = jdbc.con.createStatement();
-		ResultSet rs = stmt.executeQuery(sql);
+		String sql = "SELECT * FROM MEMBER WHERE id=? AND pass = ?";
+		JDBConnect jdbc = new JDBConnect();	
+		PreparedStatement psmt = jdbc.con.prepareStatement(sql);
+		psmt.setString(1, username);
+		psmt.setString(2, password);
+		ResultSet rs = psmt.executeQuery();
 		
 		while(rs.next()) {
 			String id = rs.getString(1);
 			String pass =rs.getString(2);
-			String name= rs.getString(3);
-			Date regidate = rs.getDate("regidate");
+			String name= rs.getString("name");
+			java.sql.Date regidate = rs.getDate("regidate");
 			
 			out.println(String.format("%s %s %s %s", id, pass, name, regidate) + "<br/>");
 			
 		}
+		jdbc.close();
 		
 	%>
 </body>
