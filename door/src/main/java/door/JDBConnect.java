@@ -20,8 +20,8 @@ public class JDBConnect {
 
             // DB에 연결
             String url = "jdbc:oracle:thin:@localhost:1521:xe";  
-            String id = "devuser";
-            String pwd = "devpass"; 
+            String id = "musthave";
+            String pwd = "1234"; 
             con =DriverManager.getConnection(url, id, pwd); 
 
             System.out.println("DB 연결 성공(기본 생성자)");

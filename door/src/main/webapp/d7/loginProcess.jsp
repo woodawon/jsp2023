@@ -21,9 +21,10 @@
 	<br> 
 	password :
 	<%=password%>
+	<br> <hr>
 	<%
 		String sql = "SELECT * FROM MEMBER WHERE id=? AND pass = ?";
-		JDBConnect jdbc = new JDBConnect();	
+		JDBConnect jdbc = new JDBConnect("oracle.jdbc.OracleDriver", "jdbc:oracle:thin:@localhost:1521:xe", "musthave", "1234");	
 		PreparedStatement psmt = jdbc.con.prepareStatement(sql);
 		psmt.setString(1, username);
 		psmt.setString(2, password);
@@ -35,7 +36,7 @@
 			String name= rs.getString("name");
 			java.sql.Date regidate = rs.getDate("regidate");
 			
-			out.println(String.format("%s %s %s %s", id, pass, name, regidate) + "<br/>");
+			out.println(String.format("%s %s %s %s", id, pass, name, regidate) + "<br>");
 			
 		}
 		jdbc.close();
