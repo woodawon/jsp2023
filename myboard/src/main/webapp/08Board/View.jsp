@@ -58,8 +58,8 @@ function deletePost() {
         <tr>
             <td colspan="4" align="center">
             <%
-            if (session.getAttribute("UserId") != null
-                && session.getAttribute("UserId").toString().equals(dto.getId())) {
+            // && session.getAttribute("UserId").toString().equals(dto.getId())
+            if (session.getAttribute("UserId") != null) {
             %>
                 <button type="button"
                         onclick="location.href='Edit.jsp?num=<%= dto.getNum() %>';">

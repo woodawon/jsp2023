@@ -23,8 +23,10 @@
 		psmt.setString(2, pw);
 		psmt.setString(3, name);
 		
-		int result = psmt.executeUpdate();
-		out.println(result + "행이 입력되었습니다.");
+		/* int result = psmt.executeUpdate();
+		out.println(result + "행이 입력되었습니다."); */
+		
+		
 		
 		psmt.close();
 	%>
