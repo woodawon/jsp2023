@@ -1,5 +1,5 @@
-<%@ page import="fileupload.MyfileDAO"%>
-<%@ page import="fileupload.MyfileDTO"%>
+<%-- <%@ page import="fileupload.MyfileDAO"%> --%>
+<%-- <%@ page import="fileupload.MyfileDTO"%> --%>
 <%@ page import="java.util.Date"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.io.File"%>
@@ -8,6 +8,8 @@
     pageEncoding="UTF-8"%>
 <%
 String saveDirectory = application.getRealPath("/Uploads");  // 저장할 디렉터리
+System.out.println(saveDirectory);
+out.println(saveDirectory);
 int maxPostSize = 100 * 1024 * 1024;  // 파일 최대 크기(100MB)
 String encoding = "UTF-8";  // 인코딩 방식
 
@@ -42,20 +44,20 @@ try {
     }
 
     // 5. DTO 생성
-    MyfileDTO dto = new MyfileDTO();
+    /* MyfileDTO dto = new MyfileDTO();
     dto.setName(name);
     dto.setTitle(title);
     dto.setCate(cateBuf.toString());
     dto.setOfile(fileName);
-    dto.setSfile(newFileName);
+    dto.setSfile(newFileName); */
 
-/*     // 6. DAO를 통해 데이터베이스에 반영
-    MyfileDAO dao = new MyfileDAO();
+    // 6. DAO를 통해 데이터베이스에 반영
+    /* MyfileDAO dao = new MyfileDAO();
     dao.insertFile(dto);
-    dao.close();
+    dao.close(); */
 
     // 7. 파일 목록 JSP로 리디렉션
-    response.sendRedirect("FileList.jsp"); */
+    response.sendRedirect("FileList.jsp");
 }
 catch (Exception e) {
     e.printStackTrace();
