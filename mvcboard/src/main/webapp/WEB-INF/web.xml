@@ -3,5 +3,23 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+	<display-name>Archetype Created Web Application</display-name>
+	<context-param>
+		<param-name>POSTS_PER_PAGE</param-name>
+		<param-value>10</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PAGES_PER_BLOCK</param-name>
+		<param-value>5</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>ListController</servlet-name>
+		<display-name>ListController</display-name>
+		<description></description>
+		<servlet-class>kr.seoul.mvcboard.ListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListController</servlet-name>
+		<url-pattern>/ListController</url-pattern>
+	</servlet-mapping>
 </web-app>
