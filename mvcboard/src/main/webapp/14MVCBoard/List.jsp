@@ -10,7 +10,7 @@
 <title>목록</title>
 </head>
 <body>
-	목록
+	목록 
 	<hr>
 	<%=request.getAttribute("count")%>
 	<hr>
@@ -32,7 +32,8 @@
 	<%
 		}
 	%>
-	${ 2 * 3 }
+	${ 2 * 3 } 
+	${ requestScope["map"]["pagingImg"] }
 	
 	<%-- <c:choose>
 		<c:when test="${empty board }">
